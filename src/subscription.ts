@@ -12,8 +12,15 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
     const postsToDelete = ops.posts.deletes.map((del) => del.uri)
     const postsToCreate = ops.posts.creates
       .filter((create) => {
-        // only alf-related posts
-        return create.record.text.toLowerCase().includes('alf')
+        const lower = create.record.text.toLowerCase()
+
+        return (
+          lower.startsWith('alf ') ||
+          lower.startsWith('alf.') ||
+          create.record.text.includes(' alf ') ||
+          create.record.text.includes(' alf.') ||
+          create.record.text.includes('alfalf')
+        )
       })
       .map((create) => {
         // map alf-related posts to a db row
