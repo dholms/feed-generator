@@ -14,13 +14,7 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
       .filter((create) => {
         const lower = create.record.text.toLowerCase()
 
-        return (
-          lower.startsWith('alf ') ||
-          lower.startsWith('alf.') ||
-          create.record.text.includes(' alf ') ||
-          create.record.text.includes(' alf.') ||
-          create.record.text.includes('alfalf')
-        )
+        return lower.match(/\ba\.?l\.?f\.?\b/i) !== null
       })
       .map((create) => {
         // map alf-related posts to a db row
