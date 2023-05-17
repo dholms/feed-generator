@@ -3,7 +3,7 @@ import { QueryParams } from '../lexicon/types/app/bsky/feed/getFeedSkeleton'
 import { AppContext } from '../config'
 
 export const uri =
-  'at://did:web:fg.dholms.xyz/app.bsky.feed.generator/whats-alf'
+  'at://did:plc:yk4dd2qkboz2yv6tpubpc6co/app.bsky.feed.generator/whats-alf'
 
 export const handler = async (ctx: AppContext, params: QueryParams) => {
   let builder = ctx.db
